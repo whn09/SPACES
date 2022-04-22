@@ -82,6 +82,17 @@ def convert(data):
     return D
 
 
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super(NpEncoder, self).default(obj)
+    
+
 if __name__ == '__main__':
 
     data_random_order_json = data_json[:-5] + '_random_order.json'
@@ -101,7 +112,7 @@ if __name__ == '__main__':
 
     with open(data_extract_json, 'w', encoding='utf-8') as f:
         for d in data:
-            f.write(json.dumps(d, ensure_ascii=False) + '\n')
+            f.write(json.dumps(d, ensure_ascii=False, cls=NpEncoder) + '\n')
 
     print(u'输入数据：%s' % data_json)
     print(u'数据顺序：%s' % data_random_order_json)

@@ -35,6 +35,7 @@ def predict(text, topk=3):
 
 if __name__ == '__main__':
 
+    # train
     from tqdm import tqdm
 
     data = extract.load_data(extract.data_extract_json)
@@ -49,3 +50,12 @@ if __name__ == '__main__':
 
     metrics = {k: v / len(valid_data) for k, v in total_metrics.items()}
     print(metrics)
+    
+    # predict
+    with open('datasets/train.json', 'r') as fin:
+        data = json.load(fin.readline())
+        text = ''
+        for texti in data['text']:
+            text += texti['sentence']+'\n'
+        summary = predict(text, topk=3)
+        print(summary)
