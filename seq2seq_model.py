@@ -294,7 +294,8 @@ class Evaluator(keras.callbacks.Callback):
     """
     def on_epoch_end(self, epoch, logs=None):
         optimizer.apply_ema_weights()
-        model.save_weights('weights/seq2seq_model.%s.weights' % epoch)  # 保存模型
+#         model.save_weights('weights/seq2seq_model.%s.weights' % epoch)  # 保存模型
+        model.save_weights('/opt/ml/model/seq2seq_model.%s.weights' % epoch)  # 保存模型
         optimizer.reset_old_weights()
 
 
@@ -318,4 +319,5 @@ if __name__ == '__main__':
 
 else:
 
-    model.load_weights('weights/seq2seq_model.%s.weights' % (epochs - 1))
+#     model.load_weights('weights/seq2seq_model.%s.weights' % (epochs - 1))
+    model.load_weights('/opt/ml/model/seq2seq_model.%s.weights' % (epochs - 1))

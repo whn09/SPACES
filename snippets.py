@@ -11,8 +11,10 @@ import jieba
 from bert4keras.snippets import open
 
 # 自定义词典
-user_dict_path = '/home/ec2-user/SageMaker/SPACES/datasets/user_dict.txt'
-user_dict_path_2 = '/home/ec2-user/SageMaker/SPACES/datasets/user_dict_2.txt'
+# user_dict_path = '/home/ec2-user/SageMaker/kwm/3rdparty/SPACES/datasets/user_dict.txt'
+# user_dict_path_2 = '/home/ec2-user/SageMaker/kwm/3rdparty/SPACES/datasets/user_dict_2.txt'
+user_dict_path = '/opt/ml/input/data/training/user_dict.txt'
+user_dict_path_2 = '/opt/ml/input/data/training/user_dict_2.txt'
 jieba.load_userdict(user_dict_path)
 jieba.initialize()
 
@@ -20,21 +22,28 @@ jieba.initialize()
 sys.setrecursionlimit(1000000)
 
 # 标注数据
-data_json = '/home/ec2-user/SageMaker/SPACES/datasets/train.json'
+# data_json = '/home/ec2-user/SageMaker/kwm/3rdparty/SPACES/datasets/train.json'
+data_json = '/opt/ml/input/data/training/train.json'
 
 # 保存权重的文件夹
 if not os.path.exists('weights'):
     os.mkdir('weights')
 
 # bert配置
-config_path = '/home/ec2-user/SageMaker/bert_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = '/home/ec2-user/SageMaker/bert_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = '/home/ec2-user/SageMaker/bert_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt'
+# config_path = '/home/ec2-user/SageMaker/bert_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json'
+# checkpoint_path = '/home/ec2-user/SageMaker/bert_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
+# dict_path = '/home/ec2-user/SageMaker/bert_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt'
+config_path = '/opt/ml/input/data/roberta/bert_config.json'
+checkpoint_path = '/opt/ml/input/data/roberta/bert_model.ckpt'
+dict_path = '/opt/ml/input/data/roberta/vocab.txt'
 
 # nezha配置
-nezha_config_path = '/home/ec2-user/SageMaker/bert_model/NEZHA-Base/bert_config.json'
-nezha_checkpoint_path = '/home/ec2-user/SageMaker/bert_model/NEZHA-Base/model.ckpt-900000'
-nezha_dict_path = '/home/ec2-user/SageMaker/bert_model/NEZHA-Base/vocab.txt'
+# nezha_config_path = '/home/ec2-user/SageMaker/bert_model/NEZHA-Base/bert_config.json'
+# nezha_checkpoint_path = '/home/ec2-user/SageMaker/bert_model/NEZHA-Base/model.ckpt-900000'
+# nezha_dict_path = '/home/ec2-user/SageMaker/bert_model/NEZHA-Base/vocab.txt'
+nezha_config_path = '/opt/ml/input/data/nezha/bert_config.json'
+nezha_checkpoint_path = '/opt/ml/input/data/nezha/model.ckpt-900000'
+nezha_dict_path = '/opt/ml/input/data/nezha/vocab.txt'
 
 # 将数据划分N份，一份作为验证集
 num_folds = 15

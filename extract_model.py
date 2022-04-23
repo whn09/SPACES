@@ -149,7 +149,8 @@ class Evaluator(keras.callbacks.Callback):
         metrics = evaluate(valid_data, valid_x, threshold + 0.1)
         if metrics['main'] >= self.best_metric:  # 保存最优
             self.best_metric = metrics['main']
-            model.save_weights('weights/extract_model.%s.weights' % fold)
+#             model.save_weights('weights/extract_model.%s.weights' % fold)
+            model.save_weights('/opt/ml/model/extract_model.%s.weights' % fold)
         metrics['best'] = self.best_metric
         print(metrics)
 
@@ -185,4 +186,5 @@ if __name__ == '__main__':
 
 else:
 
-    model.load_weights('weights/extract_model.%s.weights' % fold)
+#     model.load_weights('weights/extract_model.%s.weights' % fold)
+    model.load_weights('/opt/ml/model/extract_model.%s.weights' % fold)
