@@ -52,10 +52,13 @@ if __name__ == '__main__':
     print(metrics)
     
     # predict
-    with open('datasets/train.json', 'r') as fin:
-        data = json.load(fin.readline())
+    import json
+    fin = open('datasets/train.json', 'r')
+    for line in fin:
+        data = json.loads(line)
         text = ''
         for texti in data['text']:
             text += texti['sentence']+'\n'
         summary = predict(text, topk=3)
         print(summary)
+    fin.close()

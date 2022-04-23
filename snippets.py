@@ -11,8 +11,8 @@ import jieba
 from bert4keras.snippets import open
 
 # 自定义词典
-user_dict_path = '/home/ec2-user/SageMaker/kwm/3rdparty/SPACES/datasets/user_dict.txt'
-user_dict_path_2 = '/home/ec2-user/SageMaker/kwm/3rdparty/SPACES/datasets/user_dict_2.txt'
+user_dict_path = '/home/ec2-user/SageMaker/SPACES/datasets/user_dict.txt'
+user_dict_path_2 = '/home/ec2-user/SageMaker/SPACES/datasets/user_dict_2.txt'
 jieba.load_userdict(user_dict_path)
 jieba.initialize()
 
@@ -20,7 +20,7 @@ jieba.initialize()
 sys.setrecursionlimit(1000000)
 
 # 标注数据
-data_json = '/home/ec2-user/SageMaker/kwm/3rdparty/SPACES/datasets/train.json'
+data_json = '/home/ec2-user/SageMaker/SPACES/datasets/train.json'
 
 # 保存权重的文件夹
 if not os.path.exists('weights'):
