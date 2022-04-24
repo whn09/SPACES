@@ -17,10 +17,11 @@ import extract_model as extract
 import seq2seq_model as seq2seq
 from snippets import *
 
-if len(sys.argv) == 1:
-    fold = 0
-else:
-    fold = int(sys.argv[1])
+# if len(sys.argv) == 1:
+#     fold = 0
+# else:
+#     fold = int(sys.argv[1])
+fold = 15
 
 
 def predict(text, topk=3):
