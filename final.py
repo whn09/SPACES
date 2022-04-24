@@ -7,6 +7,9 @@
 # print(summary)
 # 科学空间：https://kexue.fm
 
+import os
+os.system('pip install -r requirements.txt')
+
 import numpy as np
 import extract_convert as convert
 import extract_vectorize as vectorize
