@@ -39,7 +39,7 @@ def predict(text, topk=3):
 
 if __name__ == '__main__':
 
-    # train
+    # evaluate
     from tqdm import tqdm
 
     data = extract.load_data(extract.data_extract_json)
