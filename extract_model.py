@@ -23,10 +23,11 @@ threshold = 0.2
 data_extract_json = data_json[:-5] + '_extract.json'
 data_extract_npy = data_json[:-5] + '_extract.npy'
 
-if len(sys.argv) == 1:
-    fold = 0
-else:
-    fold = int(sys.argv[1])
+# if len(sys.argv) == 1:
+#     fold = 0
+# else:
+#     fold = int(sys.argv[1])
+fold = 15
 
 
 def load_data(filename):
