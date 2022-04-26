@@ -57,8 +57,8 @@ if __name__ == '__main__':
     
     # predict
     import json
-#     fin = open('datasets/train.json', 'r')
-    fin = open('/opt/ml/input/data/training/train.json', 'r')
+    fin = open('datasets/train.json', 'r')
+#     fin = open('/opt/ml/input/data/training/train.json', 'r')
     for line in fin:
         data = json.loads(line)
         text = ''
