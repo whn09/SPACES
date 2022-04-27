@@ -17,11 +17,11 @@ import extract_model as extract
 import seq2seq_model as seq2seq
 from snippets import *
 
-# if len(sys.argv) == 1:
-#     fold = 0
-# else:
-#     fold = int(sys.argv[1])
-fold = 15
+if len(sys.argv) == 1:
+    fold = 0
+else:
+    fold = int(sys.argv[1])
+# fold = 15
 
 
 def predict(text, topk=3):
@@ -55,15 +55,15 @@ if __name__ == '__main__':
     metrics = {k: v / len(valid_data) for k, v in total_metrics.items()}
     print(metrics)
     
-    # predict
-    import json
-    fin = open('datasets/train.json', 'r')
-#     fin = open('/opt/ml/input/data/training/train.json', 'r')
-    for line in fin:
-        data = json.loads(line)
-        text = ''
-        for texti in data['text']:
-            text += texti['sentence']+'\n'
-        summary = predict(text, topk=3)
-        print(summary)
-    fin.close()
+#     # predict
+#     import json
+#     fin = open('datasets/train.json', 'r')
+# #     fin = open('/opt/ml/input/data/training/train.json', 'r')
+#     for line in fin:
+#         data = json.loads(line)
+#         text = ''
+#         for texti in data['text']:
+#             text += texti['sentence']+'\n'
+#         summary = predict(text, topk=3)
+# #         print(summary)
+#     fin.close()
