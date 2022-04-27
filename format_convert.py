@@ -10,9 +10,9 @@ for line in fin:
     text = ''
     for texti in data['text']:
         text += texti['sentence']+'\n'
-    print(text)
+#     print(text)
     summary = 'beginbegin'+data['summary']+'endend'
-    print(summary)
+#     print(summary)
     texts.append(text)
     summaries.append(summary)
 fin.close()
