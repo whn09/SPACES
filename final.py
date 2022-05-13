@@ -55,15 +55,18 @@ if __name__ == '__main__':
     metrics = {k: v / len(valid_data) for k, v in total_metrics.items()}
     print(metrics)
     
-#     # predict
-#     import json
-#     fin = open('datasets/train.json', 'r')
-# #     fin = open('/opt/ml/input/data/training/train.json', 'r')
-#     for line in fin:
-#         data = json.loads(line)
-#         text = ''
-#         for texti in data['text']:
-#             text += texti['sentence']+'\n'
-#         summary = predict(text, topk=3)
-# #         print(summary)
-#     fin.close()
+    # predict
+    import json
+    fin = open('datasets/train.json', 'r')
+#     fin = open('/opt/ml/input/data/training/train.json', 'r')
+    for line in fin:
+        data = json.loads(line)
+        text = ''
+        for texti in data['text']:
+            text += texti['sentence']+'\n'
+        summary = predict(text, topk=3)
+        print(text)
+        print(data['summary'])
+        print(summary)
+        break
+    fin.close()
