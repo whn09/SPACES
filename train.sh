@@ -1,4 +1,6 @@
 #! /bin/bash
+#source activate tensorflow_p36
+#pip install -r requirements.txt
 
 python extract_convert.py
 python extract_vectorize.py
